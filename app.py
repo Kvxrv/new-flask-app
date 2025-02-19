@@ -1,18 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")  # Ensure "index.html" exists inside "templates"
+    return render_template("index.html")  # Ensure this exists in templates/
 
-@app.route("/about")
-def about():
-    return "<h1>About Page</h1><p>This is the about page.</p>"
-
-@app.route("/contact")
-def contact():
-    return "<h1>Contact Page</h1><p>Get in touch with us.</p>"
+@app.route("/select_alphabet", methods=["POST"])
+def select_alphabet():
+    selected_alphabet = request.form.get("alphabet")
+    
+    if selected_alphabet:
+        alphabet_position = ord(selected_alphabet.upper()) - ord("A") + 1
+        return f"You selected {selected_alphabet.upper()}, which is letter {alphabet_position} in the alphabet."
+    else:
+        return "No alphabet selected."
 
 if __name__ == "__main__":
     app.run(debug=True)

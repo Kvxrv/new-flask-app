@@ -8,10 +8,18 @@
 <body>
     <h1>Welcome to My New Flask App!</h1>
     <p>This is the homepage.</p>
+    
     <nav>
         <a href="/">Home</a> |
         <a href="/about">About</a> |
         <a href="/contact">Contact</a>
     </nav>
+
+    <h2>Find Alphabet Position</h2>
+    <form action="/select_alphabet" method="post">
+        <label for="alphabet">Select an Alphabet:</label>
+        <input type="text" name="alphabet" id="alphabet" maxlength="1" required>
+        <button type="submit">Find Position</button>
+    </form>
 </body>
 </html>
