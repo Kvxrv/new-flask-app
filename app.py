@@ -1,18 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def home():
-    return "<h1>Welcome to My New Flask App!</h1>"
+    return render_template("index.html")  # Ensure "index.html" exists inside "templates"
 
-@app.route('/about')
+@app.route("/about")
 def about():
-    return "<h2>About Us</h2><p>This is a simple Flask app.</p>"
+    return "<h1>About Page</h1><p>This is the about page.</p>"
 
-@app.route('/contact')
+@app.route("/contact")
 def contact():
-    return "<h2>Contact Us</h2><p>Email us at support@example.com</p>"
+    return "<h1>Contact Page</h1><p>Get in touch with us.</p>"
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+if __name__ == "__main__":
+    app.run(debug=True)
